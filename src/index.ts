@@ -48,12 +48,25 @@ cart?.appendChild(cocain);
 
 
 
-document.querySelector("#submit").onclick = myClick;
+document.querySelector("#submit")?.addEventListener('click', addCart);
 
-function myClick() {
-    let a = document.querySelector("#cartname").value;
+function addCart() {
+    const nameInputElement = document.querySelector("#cartname");
+    if(nameInputElement !== null && nameInputElement instanceof HTMLInputElement) {
+        const name = nameInputElement.value;
 
-    const newcart = createCounter(a);
-    cart?.appendChild(newcart);
+        const newCart = createCounter(name);
+        cart?.appendChild(newCart);
+    } else {
+        console.error("Не найден инпут")
+    }
 }
+    
+
+function fetchDataFromServer(): string | number {
+    return ""
+}
+
+const response = fetchDataFromServer();
+(response as string).toUpperCase();
 
