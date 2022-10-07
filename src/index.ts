@@ -1,6 +1,13 @@
 'use strict'
 import { createCounter } from "./create-counter";
 
+function ctrlButton() {
+    submit.disabled = this.value.trim().length === 0;
+}
+    cartname.addEventListener('input', ctrlButton, false);
+    ctrlButton.call(cartname);
+
+
 const cart = document.getElementById("cart")
 
 const burger = createCounter("Burger");
@@ -22,4 +29,3 @@ function addCart() {
         console.error("Не найден инпут")
     }
 }
-
