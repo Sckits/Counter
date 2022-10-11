@@ -4,8 +4,18 @@ import { createCounter } from "./create-counter";
 function ctrlButton() {
     submit.disabled = this.value.trim().length === 0;
 }
-    cartname.addEventListener('input', ctrlButton, false);
-    ctrlButton.call(cartname);
+cartname.addEventListener('input', ctrlButton, false);
+ctrlButton.call(cartname);
+
+
+var inputEl = document.getElementById('cartname');
+
+document.querySelector('#cartname')?.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        addCart('cartname');
+        inputEl.value = '';
+    }
+});
 
 
 const cart = document.getElementById("cart")
@@ -25,6 +35,7 @@ function addCart() {
 
         const newCart = createCounter(name);
         cart?.appendChild(newCart);
+        inputEl.value = '';
     } else {
         console.error("Не найден инпут")
     }
