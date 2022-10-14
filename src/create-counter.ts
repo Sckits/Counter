@@ -26,21 +26,40 @@ export function createCounter(name: string) {
     reset.innerText = "reset"
     rootElement.appendChild(reset)
 
-    let counter = 0;
+    let counter = 0; // Модель, состояние
 
-    plus.addEventListener("click", () => {
-        counter = counter + 1;
-        counterElement.innerHTML = String(counter);
+    const validateCounter = () => {
+        if (counter < 1) {
+            minus.disabled = true;
+            minus.classList.add('disabled');
+        } else {
+            minus.disabled = false;
+            minus.classList.remove('disabled');
+        }
+    }
+
+    const updateView = () => {
+        counterElement.innerHTML = String(counter) //view
+    }
+
+    const updateCounter = (newValue: number) => {
+        counter = newValue;
+        validateCounter();
+        updateView();
+    }
+
+    updateCounter(0);
+
+    plus.addEventListener("click", () => { // Измение состояния, акшэном, мутацией
+        updateCounter(counter + 1);//  контроллер
     })
 
     minus.addEventListener("click", () => {
-        counter = counter - 1;
-        counterElement.innerHTML = String(counter);
+        updateCounter(counter - 1);
     })
 
     reset.addEventListener("click", () => {
-        counter = counter = 0
-        counterElement.innerHTML = String(counter);
+        updateCounter(0);
     })
 
     return rootElement;   
