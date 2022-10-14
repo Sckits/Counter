@@ -36,7 +36,10 @@ button {
 .minus {
     margin-left: auto;
 }
-
+.disabled.minus {
+    cursor: default;
+    background: red;
+}
 .plus {
     margin-right: 7px;
 }
