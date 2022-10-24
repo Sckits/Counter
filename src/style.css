@@ -38,8 +38,15 @@ button {
 }
 .disabled.minus {
     cursor: default;
-    background: red;
+    background-color: white;
+    border: 1px solid lightgrey !important;
 }
+.disabled.minus:hover {
+    color: lightgrey;
+    background-color: white;
+    border: 1px solid lightgrey !important;
+}
+
 .plus {
     margin-right: 7px;
 }
